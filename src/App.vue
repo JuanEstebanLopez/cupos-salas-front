@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <NavBar/>
-    <v-main>
-
+    <v-main class="background body--text">
+       <router-view/>
     </v-main>
   </v-app>
 </template>
@@ -20,6 +20,17 @@ export default {
 
   data: () => ({
     //
-  })
+  }),
+
+  created () {
+    this.$store.dispatch('isSetup')
+  }
 }
 </script>
+
+<style lang="scss">
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+</style>

@@ -8,14 +8,17 @@ const axios = Axios.create({
 })
 
 const BASE_ROUTES = {
-  area: 'area/',
-  carrera: 'carrera/',
-  ingreso: 'ingreso/',
-  inscripcioncarrera: 'inscripcioncarrera/',
-  persona: 'persona/',
-  rol: 'rol/',
-  sala: 'sala/',
-  tiposala: 'tiposala/'
+  area: 'area',
+  carrera: 'carrera',
+  ingreso: 'ingreso',
+  inscripcioncarrera: 'inscripcioncarrera',
+  persona: 'persona',
+  personaCedula: 'persona-cedula',
+  rol: 'rol',
+  sala: 'sala',
+  tiposala: 'tiposala',
+  setup: 'setup',
+  puedeIngresar: 'puede-ingresar' // puede-ingresar/id_sala/cedula
 }
 
 /**
@@ -40,7 +43,8 @@ function create (itemInfo) {
  * @param {numbre} id
  * @return {Promise}
  */
-function get (id) {
+function get (id = '') {
+  if (id !== '') id = '/' + id
   return axios.get(this.baseRoute + id)
 }
 
@@ -50,6 +54,7 @@ function get (id) {
  * @param {Object} itemInfo the new Item information
  */
 function update (id, itemInfo) {
+  if (id !== '') id = '/' + id
   return axios.put(this.baseRoute + id, itemInfo)
 }
 
@@ -59,6 +64,7 @@ function update (id, itemInfo) {
  * @return {Promise}
  */
 function remove (id) {
+  if (id !== '') id = '/' + id
   return axios.delete(this.baseRoute + id)
 }
 
